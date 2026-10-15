@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101116" />
+    <title>Afterglow — Music Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="music.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Afterglow home"
+          ><span class="brand-mark">♫</span> Y A G H I🚩</a
+        >
+        <div class="top-note">
+          <span class="live-dot"></span> YOUR PERSONAL SOUNDTRACK
+        </div>
+        <button
+          class="queue-toggle"
+          id="queueToggle"
+          aria-controls="playlist"
+          aria-expanded="true"
+        >
+          <span>♫</span><span class="queue-label">Queue</span
+          ><span class="queue-count" id="queueCount">04</span>
+        </button>
+      </header>
+
+      <section class="player-layout" aria-label="Music player">
+        <section class="now-playing" aria-labelledby="sectionTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">SET THE MOOD</p>
+              <h1 id="sectionTitle">Now playing</h1>
+            </div>
+            <span class="playing-badge"
+              ><span class="equalizer"><i></i><i></i><i></i></span> NOW
+              PLAYING</span
+            >
+          </div>
+
+          <div class="cover-wrap">
+            <div
+              class="cover-art"
+              id="coverArt"
+              role="img"
+              aria-label="Album artwork"
+            >
+              <div class="art-orbit orbit-one"></div>
+              <div class="art-orbit orbit-two"></div>
+              <div class="art-sun"></div>
+              <div class="art-landscape"></div>
+              <div class="art-title">
+                <span>Bya Hagha</span><strong>Makhaam Dy</strong
+                ><small>VOL. 01 &nbsp; · &nbsp; ژوند پَرسته</small>
+              </div>
+              <span class="art-index">SIDE A — 01</span>
+            </div>
+            <span class="cover-glow"></span>
+          </div>
+
+          <div class="track-meta">
+            <div class="track-copy">
+              <p class="eyebrow">ON REPEAT, ON PURPOSE</p>
+              <h2 id="songTitle">Midnight City</h2>
+              <p id="artistName">
+                M83 <span class="meta-divider">·</span> Hurry Up, We're Dreaming
+              </p>
+            </div>
+            <button
+              class="like-button"
+              id="likeButton"
+              aria-label="Like this song"
+              aria-pressed="false"
+            >
+              ♡
+            </button>
+          </div>
+
+          <div class="timeline">
+            <label class="sr-only" for="progressBar">Track progress</label
+            ><input
+              id="progressBar"
+              type="range"
+              min="0"
+              max="1000"
+              value="0"
+            />
+            <div class="time-row">
+              <span id="currentTime">0:00</span><span id="duration">0:00</span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button
+              class="icon-button shuffle-button"
+              id="shuffleButton"
+              aria-label="Shuffle"
+              aria-pressed="false"
+            >
+              ⤨</button
+            ><button
+              class="icon-button skip-button"
+              id="previousButton"
+              aria-label="Previous track"
+            >
+              ◀|</button
+            ><button class="play-button" id="playButton" aria-label="Play">
+              <span id="playIcon">▶</span></button
+            ><button
+              class="icon-button skip-button"
+              id="nextButton"
+              aria-label="Next track"
+            >
+              |▶</button
+            ><button
+              class="icon-button repeat-button"
+              id="repeatButton"
+              aria-label="Repeat off"
+              aria-pressed="false"
+            >
+              ⟳<small>1</small>
+            </button>
+          </div>
+
+          <div class="sound-row">
+            <div class="sound-label"><span>♫</span> VOLUME</div>
+            <label class="sr-only" for="volumeBar">Volume</label
+            ><input
+              id="volumeBar"
+              type="range"
+              min="0"
+              max="100"
+              value="72"
+            /><span class="volume-value" id="volumeValue">72</span>
+          </div>
+          <p class="status-message" id="statusMessage" aria-live="polite">
+            Choose a track and press play
+          </p>
+        </section>
+
+        <aside class="playlist-panel" id="playlist" aria-label="Playlist">
+          <div class="playlist-heading">
+            <div>
+              <p class="eyebrow">YOUR COLLECTION</p>
+              <h2>Up next <span id="playlistTotal">04</span></h2>
+            </div>
+            <button class="more-button" aria-label="Playlist options">
+              ···
+            </button>
+          </div>
+          <div class="playlist-summary">
+            <div class="mini-art"><span>✳</span></div>
+            <div>
+              <strong>Da Hujry Sandary</strong>
+              <p>Da Zra Sor</p>
+            </div>
+            <span class="playlist-duration">4 TRACKS</span>
+          </div>
+          <div class="track-list" id="trackList" role="list"></div>
+          <div class="playlist-footer">
+            <span class="footer-line"></span
+            ><span>A LITTLE MORE YOU, A LITTLE LESS NOISE</span
+            ><span class="footer-line"></span>
+          </div>
+          <button
+            class="autoplay-toggle"
+            id="autoplayButton"
+            aria-pressed="true"
+          >
+            <span class="autoplay-icon">↻</span
+            ><span
+              ><strong>Autoplay</strong
+              ><small>Keep the music going</small></span
+            ><span class="switch"><i></i></span>
+          </button>
+        </aside>
+      </section>
+      <footer class="page-footer">
+        <span>MADE FOR THE MOMENTS IN BETWEEN</span
+        ><span>✳ &nbsp; TAKE IT SLOW</span>
+      </footer>
+      <audio id="audioPlayer" preload="metadata"></audio>
+    </main>
+    <script src="music.js" defer></script>
+  </body>
+</html>
